@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Boards extends Model {}
+class Tags extends Model {}
 
-Boards.init(
+Tags.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,34 +11,25 @@ Boards.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    tag_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    tag
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "boards",
+    modelName: "tags",
   }
 );
 
 /* DBML
-Table boards {
+Table tags {
   id int [pk, increment]
-  title string [not null, unique]
-  created_at date [not null]
+  tag_name string [not null]
 }
-
 */
 
-module.exports = Boards;
+module.exports = Tags;
