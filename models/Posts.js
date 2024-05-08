@@ -15,6 +15,10 @@ Posts.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    source: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     content: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -27,11 +31,11 @@ Posts.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    x_size: {
+    width: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    y_size: {
+    height: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
