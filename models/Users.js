@@ -61,14 +61,4 @@ User.init(
   }
 );
 
-/* DBML
-Table users {
-  id int [pk, increment]
-  user_name varchar [not null, unique]
-  email varchar [not null, unique]
-  password varchar [not null]
-  created_at date [not null]
-}
-*/
-
 module.exports = User;

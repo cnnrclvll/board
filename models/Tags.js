@@ -25,11 +25,4 @@ Tags.init(
   }
 );
 
-/* DBML
-Table tags {
-  id int [pk, increment]
-  tag_name string [not null]
-}
-*/
-
 module.exports = Tags;

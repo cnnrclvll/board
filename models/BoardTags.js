@@ -35,11 +35,4 @@ BoardTags.init(
   }
 );
 
-/* DBML
-Table board_tags {
-  id int [pk, increment]
-  board_id int [ref: > boards.id]
-  tag_id int [ref: > tags.id]
-}
-*/
 module.exports = BoardTags;
