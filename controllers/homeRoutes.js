@@ -1,78 +1,91 @@
 const router = require("express").Router();
-const { Boards, Posts, Users, Comments } = require("../models");
+const { Boards, Posts, Users, Tags } = require("../models");
 const withAuth = require("../utils/auth");
 
 // TODO: figure out home route
-router.get("/", async (req, res) => {});
+router.get("/", async (req, res) => {
+    try {
+        res.render("homepage");
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // get a single board
 router.get("/board/:id", async (req, res) => {
-    try {
-        boardData = await Boards.findByPk(req.params.id, {
-            include: [
-                {
-                    model: Posts,
-                    include: [
-                        {
-                            model: Users,
-                            attributes: ["username"],
-                        },
-                    ],
-                },
-            ],
-        });
+  try {
+    boardData = await Boards.findByPk(req.params.id, {
+      include: [
+        {
+          model: Posts,
+          include: [
+            {
+              model: Users,
+              attributes: ["username"],
+            },
+            {
+              model: Tags,
+              attributes: ["tag_name"],
+            },
+          ],
+        },
+        {},
+      ],
+    });
 
-        const board = boardData.get({ plain: true });
+    const board = boardData.get({ plain: true });
 
-        console.log(board);
+    console.log(board);
 
-        res.render("board", {
-            board,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
+    res.render("board", {
+      board,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
     res.status(500).json(err);
-    }
+  }
 });
 
 // login route
 router.get("/login", async (req, res) => {
-    try {
-        if (req.session.logged_in) {
-            res.redirect("/");
-            return;
-        };
+  try {
+    if (req.session.logged_in) {
+      res.redirect("/");
+      return;
+    }
 
-        res.render("login");
-    } catch (err) {
-        res.status(500).json(err);
-    };
+    res.render("login");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // search boards by tags
 router.get("/search", async (req, res) => {
-    try {
-        const tags = req.query.tags.split(",");
-        console.log(tags);
+  try {
+    const tags = req.query.tags.split(",");
+    console.log(tags);
 
-        const boards = await Boards.findAll({
-            include: [
-                {
-                    model: Tags,
-                    where: {
-                        tag_name: tags,
-                    },
-                },
-            ],
-        });
-            
-        const boardData = boards.map((board) => board.get({ plain: true }));
+    const boards = await Boards.findAll({
+      include: [
+        {
+          model: Tags,
+          where: {
+            tag_name: tags,
+          },
+        },
+      ],
+    });
 
-        res.render("search", {
-            boardData,
-            logged_in: req.session.logged_in,
-        });
-    } catch (err) {
-        res.status(500).json(err);
-    }
+    const boardData = boards.map((board) => board.get({ plain: true }));
+
+    res.render("search", {
+      boardData,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+module.exports = router;

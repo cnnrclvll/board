@@ -32,4 +32,4 @@ Tags.belongsToMany(Boards, {
   foreignKey: "tag_id",
 });
 
-module.exports = { Boards, Posts, Users };
+module.exports = { Boards, Posts, Users, Tags };
