@@ -71,18 +71,5 @@ Posts.init(
     modelName: "posts",
   }
 );
-/*
-DBML
-Table posts {
-  id int [pk, increment]
-  title string [not null]
-  content text [not null]
-  created_at date [not null]
-  x_coord int [not null]
-  y_coord int [not null]
-  url string
-  user_id int [ref: > users.id]
-  board_id int [ref: > boards.id]
-}
-*/
+
 module.exports = Posts;
