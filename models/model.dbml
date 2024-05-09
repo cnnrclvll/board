@@ -16,8 +16,8 @@ Table posts {
   content text [not null]
   x_coord int [not null]
   y_coord int [not null]
-  x_size int [not null]
-  y_size int [not null]
+  width int [not null]
+  height int [not null]
   url string
   user_id int [ref: > users.id]
   board_id int [ref: > boards.id]
