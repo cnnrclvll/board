@@ -1,7 +1,7 @@
 [
     {
       "title": "Post 1",
-      "source": "123",
+      "source": "/uploads/test1.jpg",
       "content": "Content of Post 1",
       "x_coord": 10,
       "y_coord": 20,
@@ -12,7 +12,7 @@
     },
     {
       "title": "Post 2",
-      "source": "123",
+      "source": "/uploads/test2.jpg",
       "content": "Content of Post 2",
       "x_coord": 20,
       "y_coord": 30,

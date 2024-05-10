@@ -102,38 +102,18 @@ router.get("/search", async (req, res) => {
           attributes: [],
         },
       ],
-      group: ["boards.id"],
-      order: [[sequelize.literal("post_count"), "DESC"]],
+      group: ["boards.id", "tags.id"],
+      order: [[sequelize.literal("(SELECT COUNT(*) FROM posts WHERE posts.board_id = boards.id)"), "DESC"]], // Use sequelize.literal() for ordering
     });
 
     const boardData = boards.map((board) => board.get({ plain: true }));
 
+
+    console.log(boardData);
     res.render("search", {
       boardData,
       logged_in: req.session.logged_in,
     });
-
-
-    // const tags = req.query.tags.split(",");
-    // console.log(tags);
-
-    // const boards = await Boards.findAll({
-    //   include: [
-    //     {
-    //       model: Tags,
-    //       where: {
-    //         tag_name: tags,
-    //       },
-    //     },
-    //   ],
-    // });
-
-    // const boardData = boards.map((board) => board.get({ plain: true }));
-
-    // res.render("search", {
-    //   boardData,
-    //   logged_in: req.session.logged_in,
-    // });
   } catch (err) {
     res.status(500).json(err);
   }
