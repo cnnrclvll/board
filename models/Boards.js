@@ -31,13 +31,4 @@ Boards.init(
   }
 );
 
-/* DBML
-Table boards {
-  id int [pk, increment]
-  title string [not null, unique]
-  created_at date [not null]
-}
-
-*/
-
 module.exports = Boards;
