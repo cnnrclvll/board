@@ -5,7 +5,6 @@ const userData = require('./userData.json');
 const boardData = require('./boardData.json');
 const postData = require('./postData.json');
 const tagData = require('./tagData.json');
-const boardTagData = require('./boardTagData.json');
 
 const seedDatabase = async () => {
   try {
