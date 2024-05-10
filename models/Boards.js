@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Boards extends Model {}
+class Boards extends Model {};
 
 Boards.init(
   {
@@ -21,7 +21,6 @@ Boards.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    tag
   },
   {
     sequelize,
