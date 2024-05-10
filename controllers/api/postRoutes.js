@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+// TODO verify user
 router.delete("/:id", async (req, res) => {
   try {
     const postData = await Posts.destroy({

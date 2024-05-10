@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Boards, Tags } = require("../../models");
+const { Boards, Tags, Posts } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 /* DBML
@@ -89,6 +89,35 @@ Tags.belongsToMany(Boards, {
     tags: ["tag1", "tag2", "tag3"],
 }
 */
+
+// get board by id with tags and posts
+router.get("/:id", async (req, res) => {
+  try {
+    const boardData = await Boards.findByPk(req.params.id, {
+      include: [
+        {
+          model: Tags,
+          attributes: ["tag_name"],
+        },
+        {
+          model: Posts,
+          include: [
+            {
+              model: Users,
+              attributes: ["username"],
+            },
+          ],
+        },
+      ],
+    });
+
+    const board = boardData.get({ plain: true });
+
+    res.status(200).json(board);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post("/", withAuth, async (req, res) => {
   try {

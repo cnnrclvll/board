@@ -1,14 +1,39 @@
 const router = require("express").Router();
+const sequelize = require("../config/connection");
 const { Boards, Posts, Users, Tags } = require("../models");
 const withAuth = require("../utils/auth");
 
-// TODO: figure out home route
 router.get("/", async (req, res) => {
-    try {
-        res.render("homepage");
-    } catch (err) {
-        res.status(500).json(err);
-    }
+  try {
+    const boards = await Boards.findAll({
+      attributes: {
+        include: [
+          [sequelize.literal("(SELECT COUNT(*) FROM posts WHERE posts.board_id = boards.id)"), "post_count"],
+        ],
+      },
+      include: [
+        {
+          model: Posts,
+          attributes: [],
+        },
+        {
+          model: Tags,
+          attributes: ["tag_name"],
+        }
+      ],
+      group: ["boards.id"],
+      order: [[sequelize.literal("post_count"), "DESC"]],
+    });
+    // send 5 most popular boards
+    const boardData = boards.slice(0, 5).map((board) => board.get({ plain: true }));
+
+    res.render("homepage", {
+      boardData,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // get a single board
@@ -60,12 +85,10 @@ router.get("/login", async (req, res) => {
   }
 });
 
-// search boards by tags
+// search boards by tags sorted by number of posts
 router.get("/search", async (req, res) => {
   try {
     const tags = req.query.tags.split(",");
-    console.log(tags);
-
     const boards = await Boards.findAll({
       include: [
         {
@@ -74,7 +97,13 @@ router.get("/search", async (req, res) => {
             tag_name: tags,
           },
         },
+        {
+          model: Posts,
+          attributes: [],
+        },
       ],
+      group: ["boards.id"],
+      order: [[sequelize.literal("post_count"), "DESC"]],
     });
 
     const boardData = boards.map((board) => board.get({ plain: true }));
@@ -83,6 +112,28 @@ router.get("/search", async (req, res) => {
       boardData,
       logged_in: req.session.logged_in,
     });
+
+
+    // const tags = req.query.tags.split(",");
+    // console.log(tags);
+
+    // const boards = await Boards.findAll({
+    //   include: [
+    //     {
+    //       model: Tags,
+    //       where: {
+    //         tag_name: tags,
+    //       },
+    //     },
+    //   ],
+    // });
+
+    // const boardData = boards.map((board) => board.get({ plain: true }));
+
+    // res.render("search", {
+    //   boardData,
+    //   logged_in: req.session.logged_in,
+    // });
   } catch (err) {
     res.status(500).json(err);
   }
