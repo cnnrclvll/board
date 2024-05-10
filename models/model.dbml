@@ -1,0 +1,34 @@
+Table users {
+  id int [pk, increment]
+  user_name varchar [not null, unique]
+  email varchar [not null, unique]
+  password varchar [not null]
+  created_at date [not null]
+}
+Table boards {
+  id int [pk, increment]
+  title string [not null, unique]
+  created_at date [not null]
+}
+Table posts {
+  id int [pk, increment]
+  title string [not null]
+  content text [not null]
+  x_coord int [not null]
+  y_coord int [not null]
+  width int [not null]
+  height int [not null]
+  url string
+  user_id int [ref: > users.id]
+  board_id int [ref: > boards.id]
+  created_at date [not null]
+}
+Table board_tags {
+  id int [pk, increment]
+  board_id int [ref: > boards.id]
+  tag_id int [ref: > tags.id]
+}
+Table tags {
+  id int [pk, increment]
+  tag_name string [not null]
+}
