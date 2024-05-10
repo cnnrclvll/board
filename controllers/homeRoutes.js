@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
           attributes: ["tag_name"],
         }
       ],
-      group: ["boards.id"],
+      group: ["boards.id", "tags.id"],
       order: [[sequelize.literal("post_count"), "DESC"]],
     });
     // send 5 most popular boards
