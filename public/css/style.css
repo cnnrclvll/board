@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Lobster-Regular';
+    src: url('./fonts/lobster/Lobster-Regular.ttf') format('opentype');
+}
+
+* {
+    font-family: 'Lobster-Regular' !important;
+    overflow: hidden;
+    cursor: default;
+}
+
+.main-content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    height: 100vh;
+}
+
+.main-content-container h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0;
+    margin-bottom: 1rem !important;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text horizontally */
+}
+
+.board-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    border-radius: 1rem;
+    background-color: lightgray;
+    margin: .2rem;
+}
+
+.board-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.board-form input {
+    margin: .2rem;
+}

@@ -12,16 +12,8 @@
 </head>
 
 <body>
-    {{#if logged_in}}
-        <a class="button-xlarge pure-button" href="/profile">Your Posts</a>
-        <button class="button-xlarge pure-button">Logout</button>
-    {{else}}
-        <a href="/login" class="button-xlarge pure-button">Sign In/Sign Up</a>
-    {{/if}}
-
-    {{{ body }}}
-
-    {{#if logged_in}}
-    <script src="/public/js/logout.js"></script>
-    {{/if}}
+    <div class="main-content-container">
+        {{{ body }}}
+    </div>
 </body>
+</html>
