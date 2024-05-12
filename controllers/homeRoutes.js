@@ -119,4 +119,27 @@ router.get("/search", async (req, res) => {
   }
 });
 
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const userData = await Users.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Posts
+        },
+      ],
+    });
+
+    const user = userData.get({ plain: true });
+
+    console.log(user);
+
+    res.render("profile", {
+      user,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
