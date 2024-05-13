@@ -46,15 +46,14 @@ router.get("/board/:id", async (req, res) => {
           include: [
             {
               model: Users,
-              attributes: ["username"],
-            },
-            {
-              model: Tags,
-              attributes: ["tag_name"],
+              attributes: ["user_name"],
             },
           ],
         },
-        {},
+        {
+          model: Tags,
+          attributes: ["tag_name"],
+        },
       ],
     });
 
@@ -67,6 +66,7 @@ router.get("/board/:id", async (req, res) => {
       logged_in: req.session.loggedIn,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
