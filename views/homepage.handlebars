@@ -1,3 +1,20 @@
+<div class="main-content">
+    <h1>board</h1>
+    {{#if logged_in}}
+    <a class="button-xlarge pure-button board-button" href="/profile">Profile</a>
+    <button class="button-xlarge pure-button board-button">Logout</button>
+    {{{ Search }}}
+    {{else}}
+        <a href="/login" class="button-xlarge pure-button board-button">Sign In/Sign Up</a>
+    {{/if}}
+</div>
+
+
+{{#if logged_in}}
+<script src="/public/js/logout.js"></script>
+{{/if}}
+
+
 <div class="pure-g">
     {{#each board as |board|}}
         {{> board-details}}
