@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       boardData,
-      logged_in: req.session.logged_in,
+      logged_in: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -64,7 +64,7 @@ router.get("/board/:id", async (req, res) => {
 
     res.render("board", {
       board,
-      logged_in: req.session.logged_in,
+      logged_in: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -74,7 +74,7 @@ router.get("/board/:id", async (req, res) => {
 // login route
 router.get("/login", async (req, res) => {
   try {
-    if (req.session.logged_in) {
+    if (req.session.loggedIn) {
       res.redirect("/");
       return;
     }
@@ -112,7 +112,7 @@ router.get("/search", async (req, res) => {
     console.log(boardData);
     res.render("search", {
       boardData,
-      logged_in: req.session.logged_in,
+      logged_in: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -135,7 +135,7 @@ router.get("/profile", withAuth, async (req, res) => {
 
     res.render("profile", {
       user,
-      logged_in: req.session.logged_in,
+      logged_in: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
