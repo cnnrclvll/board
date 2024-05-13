@@ -121,7 +121,8 @@ router.get("/search", async (req, res) => {
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
-    const userData = await Users.findByPk(req.session.user_id, {
+    console.log(req.session.userId);
+    const userData = await Users.findByPk(req.session.userId, {
       include: [
         {
           model: Posts

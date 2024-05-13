@@ -23,8 +23,10 @@ router.post("/", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { user_name: req.body.user } });
-
+    console.log("Received POST request to login");
+    console.log("Request body:", req.body);
+    const userData = await Users.findOne({ where: { user_name: req.body.user } });
+    console.log("User data:", userData);
     if (!userData) {
       res
         .status(400)
@@ -48,6 +50,7 @@ router.post("/login", async (req, res) => {
       res.json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
+    console.log("Error:", err);
     res.status(400).json(err);
   }
 });
