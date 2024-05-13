@@ -1,14 +1,6 @@
-<form class="pure-form">
-    <input type="text" class="pure-input-rounded" />
-    <button type="submit" class="pure-button">Search</button>
-</form>
-
-<div class="pure-menu custom-restricted-width">
-    {{!-- <span class="pure-menu-heading"></span> --}}
-    <ul class="pure-menu-list">
-        {{#each board as |board|}}
-            <li class="pure-menu-item">
-                <a href="/board/:{{board.id}}" class="pure-menu-link">{{board.title}}</a>
-            </li>
-        {{/each}}
+<div class="main-content-container">
+    <form class="pure-form">
+        <input type="text" class="pure-input-rounded" placeholder="Separate using commas"/>
+        <button type="submit" class="pure-button board-button">Search</button>
+    </form>
 </div>
