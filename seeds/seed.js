@@ -41,9 +41,7 @@ const seedDatabase = async () => {
     // Seed posts
     const posts = await Posts.bulkCreate(
       postData.map((post) => ({
-        ...post,
-        user_id: users[Math.floor(Math.random() * users.length)].id,
-        board_id: boards[Math.floor(Math.random() * boards.length)].id,
+        ...post
       }))
     );
 
