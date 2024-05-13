@@ -1,7 +1,7 @@
 const loginhandler = async (e) => {
     e.preventDefault();
-    const user = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
+    const user = document.querySelector('#login-username').value;
+    const password = document.querySelector('#login-password').value;
     const response = await fetch('/api/user/login', {
         method: 'POST',
         body: JSON.stringify({ user, password }),
@@ -17,9 +17,9 @@ const loginhandler = async (e) => {
 
 const signupHandler = async (e) => {
     e.preventDefault();
-    const user_name = document.querySelector('#username').value;
-    const email = document.querySelector('#email').value;
-    const password = document.querySelector('#password').value;
+    const user_name = document.querySelector('#signup-username').value;
+    const email = document.querySelector('#signup-email').value;
+    const password = document.querySelector('#signup-password').value;
     const response = await fetch('/api/user/', {
         method: 'POST',
         body: JSON.stringify({ user_name, email, password }),
