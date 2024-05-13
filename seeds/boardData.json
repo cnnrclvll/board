@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Board 1",
+    "tags": ["tag1", "tag2"]
+  },
+  {
+    "title": "Board 2",
+    "tags": ["tag3", "tag4"]
+  },
+  {
+    "title": "Board 3",
+    "tags": ["tag1", "tag4"]
+  }
+]
