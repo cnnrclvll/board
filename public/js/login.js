@@ -1,4 +1,4 @@
-const loginhandler = async (e) => {
+const loginHandler = async (e) => {
     e.preventDefault();
     const user = document.querySelector('#ursername').value;
     const password = document.querySelector('#password').value;
@@ -33,5 +33,5 @@ const signupHandler = async (e) => {
     }
 };
 
-document.querySelector('.sign-in-form').addEventListener('submit', loginhandler);
+document.querySelector('.sign-in-form').addEventListener('submit', loginHandler);
 document.querySelector('.sign-up-form').addEventListener('submit', signupHandler);
