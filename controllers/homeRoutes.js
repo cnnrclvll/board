@@ -110,7 +110,7 @@ router.get("/search", async (req, res) => {
 
 
     console.log(boardData);
-    res.render("search", {
+    res.render("searchpage", {
       boardData,
       logged_in: req.session.loggedIn,
     });
