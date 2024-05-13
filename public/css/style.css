@@ -17,7 +17,7 @@
     height: 100vh;
 }
 
-.main-content-container h1 {
+.logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,4 +53,14 @@
 
 .board-form input {
     margin: .2rem;
+}
+
+.board-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-title {
+    margin: 0;
+    padding: 0;;
 }
