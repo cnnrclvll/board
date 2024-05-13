@@ -1,0 +1,13 @@
+<div class="col-sm-6 mb-3 mb-sm-0">
+<div class="card">
+    <div class="card-body">
+    <h5 class="card-title">{{board.title}}</h5>
+    <p class="card-text">
+        {{#each board.tags as |tag|}}
+        {{tag.tag_name}}{{#unless @last}}, {{/unless}}
+        {{/each}}
+    </p>
+    <a href="#" class="pure-button board-button">Create a post</a>
+    </div>
+</div>
+</div>
