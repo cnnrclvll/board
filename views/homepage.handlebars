@@ -1,9 +1,9 @@
 <div class="main-content">
     <h1 class="logo">board</h1>
     {{#if logged_in}}
+    {{> search-details }}
     <a id="profile" class="button-xlarge pure-button board-button" href="/profile">Profile</a>
     <button id="logout" class="button-xlarge pure-button board-button">Logout</button>
-    {{{ Search }}}
     {{else}}
         <a id="sign-in-up" class="button-xlarge pure-button board-button" href="/login">Sign In/Sign Up</a>
     {{/if}}
