@@ -39,35 +39,44 @@ router.get("/", async (req, res) => {
 // get a single board
 router.get("/board/:id", async (req, res) => {
   try {
-    boardData = await Boards.findByPk(req.params.id, {
+    const boardId = req.params.id;
+
+    // Fetch the board with its associated posts and tags
+    const boardData = await Boards.findByPk(boardId, {
       include: [
         {
-          model: Posts,
+          model: Tags,
+          attributes: ["tag_name"],
+        },
+        {
+          model: Posts, // Include the Posts model
           include: [
             {
               model: Users,
-              attributes: ["username"],
-            },
-            {
-              model: Tags,
-              attributes: ["tag_name"],
+              attributes: ["user_name"],
             },
           ],
         },
-        {},
       ],
     });
 
+    if (!boardData) {
+      // Handle the case where the board with the given id is not found
+      return res.status(404).json({ message: "Board not found" });
+    }
+
+    // Get the plain JavaScript object representation of the board
     const board = boardData.get({ plain: true });
 
-    console.log(board);
-
+    // Send the board data in the response
     res.render("board", {
       board,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
-    res.status(500).json(err);
+    // Handle any errors that occur during the database query or processing
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
@@ -135,6 +144,28 @@ router.get("/profile", withAuth, async (req, res) => {
 
     res.render("profile", {
       user,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Posts.findByPk(req.params.id, {
+      include: [
+        {
+          model: Users,
+          attributes: ["user_name"],
+        }
+      ],
+    });
+
+    const post = postData.get({ plain: true });
+
+    res.render("post", {
+      post,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
