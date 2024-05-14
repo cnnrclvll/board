@@ -3,11 +3,13 @@
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">
-                {{#each tags as |tag|}}
-                {{tag_name}}
+                {{#each allTags as |tag|}}
+                {{tag_name}}{{#unless @last}}, {{/unless}}
                 {{/each}}
             </p>
-            <a href="#" class="pure-button board-button">Create a post</a>
+            <div>
+                <a href="board/{{id}}/create-post" class="pure-button board-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Create a post</a>
+            </div>
         </div>
     </div>
 </div>
