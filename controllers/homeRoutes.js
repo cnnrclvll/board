@@ -96,20 +96,28 @@ router.get("/search", async (req, res) => {
           where: {
             tag_name: tags,
           },
+          required: true, // Ensure that at least one matching tag is required
         },
         {
           model: Posts,
           attributes: [],
         },
       ],
-      group: ["boards.id", "tags.id"],
-      order: [[sequelize.literal("(SELECT COUNT(*) FROM posts WHERE posts.board_id = boards.id)"), "DESC"]], // Use sequelize.literal() for ordering
+      separate: true, // Fetch Tags separately
+      order: [[sequelize.literal("(SELECT COUNT(*) FROM posts WHERE posts.board_id = boards.id)"), "DESC"]],
     });
+
+    // Fetch all tags associated with each board
+    for (const board of boards) {
+      const allTags = await board.getTags();
+      board.dataValues.allTags = allTags.map(tag => tag.get({ plain: true }));
+    }
 
     const boardData = boards.map((board) => board.get({ plain: true }));
 
-
     console.log(boardData);
+    console.log(boardData[0].allTags);
+    console.log(boardData[1].tags);
     res.render("searchpage", {
       boardData,
       logged_in: req.session.loggedIn,
@@ -118,6 +126,7 @@ router.get("/search", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
