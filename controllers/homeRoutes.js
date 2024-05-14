@@ -127,6 +127,16 @@ router.get("/search", async (req, res) => {
   }
 });
 
+router.get("/board/:id/create-post", async (req, res) => {
+  try {
+    res.render("createPost", {
+      board_id: req.params.id,
+      logged_in: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
