@@ -71,6 +71,17 @@ router.get("/board/:id", async (req, res) => {
   }
 });
 
+// create board
+router.get("/create-board", withAuth, async (req, res) => {
+  try {
+    res.render("createBoard", {
+      logged_in: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // login route
 router.get("/login", async (req, res) => {
   try {
