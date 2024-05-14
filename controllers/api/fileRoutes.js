@@ -3,6 +3,7 @@ const fileUpload = require("express-fileupload");
 const fs = require("fs").promises;
 const sharp = require("sharp");
 const withAuth = require("../../utils/auth");
+const e = require("express");
 
 router.use(fileUpload());
 
@@ -17,24 +18,36 @@ router.post("/upload", withAuth, async (req, res) => {
     }
 
     const file = req.files.image;
-
     const inputBuffer = file.data;
-
-    const resizedImage = await sharp(inputBuffer)
-      .resize({
-        width: maxWidth,
-        height: maxHeight,
-        fit: "inside",
-        withoutEnlargement: true,
-      })
-      .toBuffer();
-
-    const filename = `${req.session.userId}-${Date.now()}.jpg`;
+    const fileType = file.mimetype.split("/")[1];
+    let resizedImage;
+    if (fileType == "gif") {
+      resizedImage = await sharp(inputBuffer, { animated: true })
+        .resize({
+          width: maxWidth,
+          height: maxHeight,
+          fit: "inside",
+          withoutEnlargement: true,
+        })
+        .gif({ dither: 0 })
+        .toBuffer();
+    } else {
+      resizedImage = await sharp(inputBuffer)
+        .resize({
+          width: maxWidth,
+          height: maxHeight,
+          fit: "inside",
+          withoutEnlargement: true,
+        })
+        .toBuffer();
+    }
+    const filename = `${req.session.userId}-${Date.now()}.${fileType}`;
 
     await fs.writeFile(`./public/uploads/${filename}`, resizedImage);
 
     res.status(200).json({ url: `/uploads/${filename}` });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

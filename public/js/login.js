@@ -17,7 +17,7 @@ const loginHandler = async (e) => {
 
 const signupHandler = async (e) => {
     e.preventDefault();
-    const user_name = document.querySelector('#aligned-username').value;
+    const user_name = document.querySelector('#aligned-name').value;
     const email = document.querySelector('#aligned-email').value;
     const password = document.querySelector('#aligned-password').value;
     const response = await fetch('/api/user/', {

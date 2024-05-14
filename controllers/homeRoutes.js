@@ -71,6 +71,17 @@ router.get("/board/:id", async (req, res) => {
   }
 });
 
+// create board
+router.get("/create-board", withAuth, async (req, res) => {
+  try {
+    res.render("createBoard", {
+      logged_in: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // login route
 router.get("/login", async (req, res) => {
   try {
@@ -117,7 +128,6 @@ router.get("/search", async (req, res) => {
 
     console.log(boardData);
     console.log(boardData[0].allTags);
-    console.log(boardData[1].tags);
     res.render("searchpage", {
       boardData,
       logged_in: req.session.loggedIn,
@@ -127,6 +137,16 @@ router.get("/search", async (req, res) => {
   }
 });
 
+router.get("/board/:id/create-post", async (req, res) => {
+  try {
+    res.render("createPost", {
+      board_id: req.params.id,
+      logged_in: req.session.loggedIn,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
