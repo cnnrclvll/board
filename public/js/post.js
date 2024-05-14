@@ -22,3 +22,5 @@ const postHandler = async (event) => {
     alert("Failed to post.");
   }
 };
+
+document.querySelector("#post-form").addEventListener("submit", postHandler);

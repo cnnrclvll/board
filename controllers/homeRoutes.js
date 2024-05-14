@@ -117,7 +117,6 @@ router.get("/search", async (req, res) => {
 
     console.log(boardData);
     console.log(boardData[0].allTags);
-    console.log(boardData[1].tags);
     res.render("searchpage", {
       boardData,
       logged_in: req.session.loggedIn,
