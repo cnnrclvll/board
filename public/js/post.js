@@ -1,26 +1,36 @@
-const postHandler = async (event) => {
-  event.preventDefault();
-  const title = document.querySelector("#post-title").value.trim();
-  const content = document.querySelector("#post-content").value.trim();
-  const board_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 2
-  ];
-  // upload file to api/file
-  const fileResponse = await fetch("/api/file/", {
-    method: "POST",
-    body: new FormData(document.querySelector("#post-source")),
-  });
-  const response = await fetch("/api/posts/", {
-    method: "POST",
-    body: JSON.stringify({ title, content, board_id, url: fileResponse.url}),
-    headers: { "Content-Type": "application/json" },
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  const postHandler = async (event) => {
+    event.preventDefault();
+    const title = document.querySelector("#post-title").value.trim();
+    const content = document.querySelector("#post-content").value.trim();
+    const url = document.querySelector("#post-url").value.trim();
+    const board_id = window.location.toString().split("/")[
+      window.location.toString().split("/").length - 2
+    ];
 
-  if (response.ok) {
-    document.location.replace("/board/" + board_id);
-  } else {
-    alert("Failed to post.");
-  }
-};
+    const file = document.querySelector("#post-source").files[0];
+    const formData = new FormData();
+    formData.append("image", file);
 
-document.querySelector("#create-post-form").addEventListener("submit", postHandler);
+    const fileResponse = await fetch("/api/file/upload", {
+      method: "POST",
+      body: formData,
+    }).then((response) => response.json());
+    
+    const response = await fetch("/api/post/", {
+      method: "POST",
+      body: JSON.stringify({ title, content, board_id, url, source: fileResponse.url }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (response.ok) {
+      document.location.replace("/board/" + board_id);
+    } else {
+      alert("Failed to post.");
+    }
+  };
+
+  document
+    .querySelector("#create-post-form")
+    .addEventListener("submit", postHandler);
+});

@@ -3,7 +3,9 @@ const { Posts } = require("../../models");
 
 router.post("/", async (req, res) => {
   try {
-    const postData = await Posts.create(req.body);
+    console.log(req.body);
+    console.log(req.session.userId);
+    const postData = await Posts.create(req.body, user_id = req.session.userId);
 
     res.status(200).json(postData);
   } catch (err) {
@@ -11,10 +13,8 @@ router.post("/", async (req, res) => {
   }
 });
 
-// TODO verify user
 router.delete("/:id", async (req, res) => {
   try {
-    // check if user is the one who posted
     const postData = await Posts.destroy({
       where: {
         id: req.params.id,
