@@ -4,6 +4,8 @@
     {{> search-details }}
     <a id="profile" class="button-xlarge pure-button board-button" href="/profile">Profile</a>
     <button id="logout" class="button-xlarge pure-button board-button">Logout</button>
+
+
     {{else}}
         <a id="sign-in-up" class="button-xlarge pure-button board-button" href="/login">Sign In/Sign Up</a>
     {{/if}}
@@ -16,7 +18,18 @@
 
 
 <div class="pure-g">
-    {{#each board as |board|}}
-        {{> board-details}}
+<ul>
+    {{#each boardData}}
+      <li>
+        <h3>{{title}}</h3>
+        <p>Post Count: {{this.post_count}}</p>
+        <p>Tags:
+          {{#each this.tags}}
+            {{this.tag_name}}
+            {{#unless @last}}, {{/unless}}
+          {{/each}}
+        </p>
+      </li>
     {{/each}}
+  </ul>
 </div>
