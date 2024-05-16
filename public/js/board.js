@@ -1,8 +1,9 @@
 const boardHandler = async (event) => {
     event.preventDefault();
     const title = document.querySelector("#board-title").value.trim();
-    const tags = document.querySelector("#board-tags").value.trim().split(",");
-    const response = await fetch("/api/boards/", {
+    const tags = document.querySelector("#board-tags").value.trim().split(",").map(tag => tag.trim());
+    console.log(tags);
+    const response = await fetch("/api/board/", {
         method: "POST",
         body: JSON.stringify({ title, tags }),
         headers: { "Content-Type": "application/json" },
