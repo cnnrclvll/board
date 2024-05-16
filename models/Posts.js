@@ -25,15 +25,23 @@ Posts.init(
     },
     x_coord: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
     y_coord: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
     width: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
     height: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
     },
     url: {
       type: DataTypes.STRING,

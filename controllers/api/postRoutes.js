@@ -5,6 +5,7 @@ const logger = require("../../utils/logger");
 // Route to create a new post
 router.post("/", async (req, res) => {
   try {
+
     // Create a new post
     const postData = await Posts.create(req.body);
 
@@ -17,10 +18,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Route to delete a post by id
 router.delete("/:id", async (req, res) => {
   try {
-    // Delete the post with the specified id and belonging to the current user
+
+// Route to delete a post by id
     const postData = await Posts.destroy({
       where: {
         id: req.params.id,
