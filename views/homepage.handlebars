@@ -1,9 +1,13 @@
 <div class="main-content">
     <h1 class="logo">board</h1>
     {{#if logged_in}}
-    {{> search-details }}
-    <a id="profile" class="button-xlarge pure-button board-button" href="/profile">Profile</a>
-    <button id="logout" class="button-xlarge pure-button board-button">Logout</button>
+
+      {{> search-details }}
+      
+      <a id="profile" class="button-xlarge pure-button board-button" href="/profile">Profile</a>
+      <button id="logout" class="button-xlarge pure-button board-button">Logout</button>
+      
+      {{> popularPosts-details }}
 
 
     {{else}}
@@ -11,25 +15,6 @@
     {{/if}}
 </div>
 
-
 {{#if logged_in}}
-<script src="/js/logout.js"></script>
+<script "/js/logout.js"></script>
 {{/if}}
-
-
-<div class="pure-g">
-<ul>
-    {{#each boardData}}
-      <li>
-        <h3>{{title}}</h3>
-        <p>Post Count: {{this.post_count}}</p>
-        <p>Tags:
-          {{#each this.tags}}
-            {{this.tag_name}}
-            {{#unless @last}}, {{/unless}}
-          {{/each}}
-        </p>
-      </li>
-    {{/each}}
-  </ul>
-</div>
