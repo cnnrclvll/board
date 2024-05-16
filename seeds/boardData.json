@@ -1,14 +1,34 @@
 [
   {
-    "title": "Board 1",
-    "tags": ["tag1", "tag2"]
+    "title": "Live Events",
+    "tags": ["concert", "Music", "Live Events","Entertainment","Comedy","Tour","stageplay","theatre","broadway","shows"]
   },
   {
-    "title": "Board 2",
-    "tags": ["tag3", "tag4"]
+    "title": "Local Meetups",
+    "tags": ["Local Events", "Community Projects","Free","Volunteer","community service","outreach","festival","dating","singles"]
   },
   {
-    "title": "Board 3",
-    "tags": ["tag1", "tag4"]
+    "title": "Sports",
+    "tags": ["Fitness", "Activities","Live Events","competition","pro sports","local events","tickets","training"]
+  },
+  {
+    "title": "Music",
+    "tags": ["Music", "Entertainment","Underground","Private"]
+  },
+  {
+    "title": "Bars",
+    "tags": ["21+", "Food","Beverages","Drinks","Alcohol","Bars"]
+  },
+  {
+    "title": "Gaming",
+    "tags": ["Gaming", "Technology","Activities","Games","competition","Local Events"]
+  },
+  {
+    "title": "Job Oppurtunities",
+    "tags": ["Jobs", "Help Wanted","Employment","Labor"]
   }
+  
+  
+  
+  
 ]
