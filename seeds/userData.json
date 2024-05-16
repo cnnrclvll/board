@@ -1,15 +1,64 @@
 [
-    {
-      "user_name": "user1",
-      "email": "user1@example.com",
-      "password": "password1",
-      "created_at": "2024-05-09"
-    },
-    {
-      "user_name": "user2",
-      "email": "user2@example.com",
-      "password": "password2",
-      "created_at": "2024-05-09"
-    }
+  {
+    "user_name": "johndavis",
+    "email": "johndavis@example.com",
+    "password": "password3",
+    "created_at": "2024-05-10"
+  },
+  {
+    "user_name": "janestewart",
+    "email": "janestewart@example.com",
+    "password": "password4",
+    "created_at": "2024-05-11"
+  },
+  {
+    "user_name": "alexsmith",
+    "email": "alexsmith@example.com",
+    "password": "password5",
+    "created_at": "2024-05-12"
+  },
+  {
+    "user_name": "emilyjones",
+    "email": "emilyjones@example.com",
+    "password": "password6",
+    "created_at": "2024-05-13"
+  },
+  {
+    "user_name": "michaelbrown",
+    "email": "michaelbrown@example.com",
+    "password": "password7",
+    "created_at": "2024-05-14"
+  },
+  {
+    "user_name": "sarahwilson",
+    "email": "sarahwilson@example.com",
+    "password": "password8",
+    "created_at": "2024-05-15"
+  },
+  {
+    "user_name": "davidlee",
+    "email": "davidlee@example.com",
+    "password": "password9",
+    "created_at": "2024-05-16"
+  },
+  {
+    "user_name": "lauracook",
+    "email": "lauracook@example.com",
+    "password": "password10",
+    "created_at": "2024-05-17"
+  },
+  {
+    "user_name": "peterparker",
+    "email": "peterparker@example.com",
+    "password": "password11",
+    "created_at": "2024-05-18"
+  },
+  { 
+    "user_name": "lisajohnson",
+    "email": "lisajohnson@example.com",
+    "password": "password12",
+    "created_at": "2024-05-19"
+  }
+    
   ]
   
