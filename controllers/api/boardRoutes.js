@@ -148,7 +148,7 @@ router.post("/", withAuth, async (req, res) => {
       await boardData.setTags(tags);
     }
 
-    res.status(200).json(boardData);
+    res.status(201).json(boardData);
   } catch (err) {
     res.status(400).json(err);
   }
