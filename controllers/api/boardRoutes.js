@@ -1,96 +1,9 @@
 const router = require("express").Router();
 const { Boards, Tags, Posts, Users } = require("../../models");
 const withAuth = require("../../utils/auth");
+const logger = require("../../utils/logger");
 
-/* DBML
-Boards.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    tag
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "boards",
-  }
-);
-
-Tags.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    tag_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "tags",
-  }
-);
-
-Users.hasMany(Posts, {
-  foreignKey: "user_id",
-  onDelete: "CASCADE",
-});
-
-Posts.belongsTo(Users, {
-  foreignKey: "user_id",
-});
-
-Boards.hasMany(Posts, {
-  foreignKey: "board_id",
-  onDelete: "CASCADE",
-});
-
-Posts.belongsTo(Boards, {
-  foreignKey: "board_id",
-});
-
-Boards.belongsToMany(Tags, {
-  through: BoardTags,
-  foreignKey: "board_id",
-});
-
-Tags.belongsToMany(Boards, {
-  through: BoardTags,
-  foreignKey: "tag_id",
-});
-*/
-
-/*
-{
-    title: "My first board",
-    tags: ["tag1", "tag2", "tag3"],
-}
-*/
-
-// get board by id with tags and posts
+// Route to get board by id with tags and posts
 router.get("/:id", async (req, res) => {
   try {
     const boardId = req.params.id;
@@ -114,8 +27,8 @@ router.get("/:id", async (req, res) => {
       ],
     });
 
+    // If no board found, return 404
     if (!boardData) {
-      // Handle the case where the board with the given id is not found
       return res.status(404).json({ message: "Board not found" });
     }
 
@@ -126,16 +39,18 @@ router.get("/:id", async (req, res) => {
     res.status(200).json(board);
   } catch (err) {
     // Handle any errors that occur during the database query or processing
-    console.error(err);
+    logger.error(err);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
+// Route to create a new board
 router.post("/", withAuth, async (req, res) => {
   try {
+    // Create a new board
     const boardData = await Boards.create(req.body);
 
+    // If board has tags, associate them
     if (req.body.tags.length) {
       const tags = await Promise.all(
         req.body.tags.map(async (tagName) => {
@@ -148,8 +63,11 @@ router.post("/", withAuth, async (req, res) => {
       await boardData.setTags(tags);
     }
 
+    // Send success response with created board data
     res.status(201).json(boardData);
   } catch (err) {
+    // Handle errors and send error response
+    logger.error(err);
     res.status(400).json(err);
   }
 });
