@@ -1,0 +1,9 @@
+<div class="main-content">
+    {{#each user.post as |post|}}
+        {{> post-details }}
+        <button data-id="{{id}}" class="delete-post"></button>
+    {{/each}}
+</div>
+
+<script src="/js/profile.js"></script>
+{{!-- card for each post, with delete button --}}
