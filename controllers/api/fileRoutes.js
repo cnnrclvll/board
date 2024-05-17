@@ -13,9 +13,6 @@ const maxHeight = 800;
 // Route to upload a file
 router.post("/upload", withAuth, async (req, res) => {
   try {
-    // Log the uploaded files
-    logger.info(req.files);
-
     // Check if file is uploaded
     if (!req.files.image) {
       return res.status(400).json({ message: "No file uploaded" });
@@ -57,7 +54,9 @@ router.post("/upload", withAuth, async (req, res) => {
     res.status(200).json({ url: `/uploads/${filename}` });
   } catch (err) {
     // Handle errors and send error response
+    console.log(req.session.userId);
     logger.error(err);
+    console.log(err)
     res.status(500).json(err);
   }
 });
