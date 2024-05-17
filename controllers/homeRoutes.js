@@ -191,12 +191,14 @@ router.get("/profile", withAuth, async (req, res) => {
           model: Posts,
         },
       ],
+      attributes: {
+        exclude: ["password"],
+      },
     });
-
+    console.log("user data:", userData);
     const user = userData.get({ plain: true });
-
     logger.debug(user); // Log debug information
-
+    console.log("user:", user);
     res.render("profile", {
       user,
       logged_in: req.session.loggedIn,
