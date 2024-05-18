@@ -184,7 +184,6 @@ router.get("/board/:id/create-post", async (req, res) => {
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
-    logger.debug(req.session.userId); // Log debug information
     const userData = await Users.findByPk(req.session.userId, {
       include: [
         {
@@ -195,10 +194,7 @@ router.get("/profile", withAuth, async (req, res) => {
         exclude: ["password"],
       },
     });
-    console.log("user data:", userData);
     const user = userData.get({ plain: true });
-    logger.debug(user); // Log debug information
-    console.log("user:", user);
     res.render("profile", {
       user,
       logged_in: req.session.loggedIn,
@@ -207,6 +203,10 @@ router.get("/profile", withAuth, async (req, res) => {
     logger.error(err); // Log error
     res.status(500).render("error", { message: "Internal server error" });
   }
+});
+
+router.get("*", (req, res) => {
+  res.status(404).render("error", { message: "Page not found" });
 });
 
 module.exports = router;
