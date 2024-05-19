@@ -1,20 +1,27 @@
 @font-face {
-    font-family: 'Lobster-Regular';
-    src: url('./fonts/lobster/Lobster-Regular.ttf') format('opentype');
+    font-family: 'Lobster';
+    src: url('./fonts/lobster/Lobster-Regular.ttf') format('truetype');
 }
 
 * {
-    font-family: 'Lobster-Regular' !important;
-    overflow: hidden;
+    font-family: 'Lobster' !important;
     cursor: default;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
+
+.svg-container {
+    min-width: 100vw; /* 100% of viewport width */
+    min-height: 100vh; /* 100% of viewport height */
+    z-index: -1;
+    position: fixed;
+}
+
 
 .main-content-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
-    height: 100vh;
 }
 
 .logo {
@@ -26,6 +33,7 @@
     padding-right: 1rem;
     margin: 0;
     margin-bottom: 1rem !important;
+    overflow: hidden;
 }
 
 .main-content {
@@ -62,5 +70,11 @@
 
 .modal-title {
     margin: 0;
-    padding: 0;;
+    padding: 0;
 }
+
+.post-card {
+    box-sizing: border-box;
+    margin: .25rem;
+}
+

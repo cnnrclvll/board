@@ -1,4 +1,4 @@
-<section class="post">
+{{!-- <section class="post">
     <div class="post-body">
         <img src="{{source}}" alt="{{description}}">
         <div class="post-overlay">
@@ -7,4 +7,13 @@
         </div>
     </div>
   </a>
-</section>
+</section> --}}
+
+<div class="card text-bg-dark">
+  <img src="{{source}}" class="card-img" alt="{{description}}">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{created_at}}</p>
+    <p class="card-text"><small>{{user.user_name}}</small></p>
+  </div>
+</div>
