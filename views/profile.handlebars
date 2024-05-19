@@ -1,7 +1,7 @@
 <div class="main-content">
     {{#each user.posts as |post|}}
         {{> post-details }}
-        <button data-id="{{id}}" class="delete-post"></button>
+        <button data-id="{{id}}" class="pure-button delete-post">Delete Post</button>
     {{/each}}
 </div>
 
