@@ -3,8 +3,17 @@
     src: url('./fonts/lobster/Lobster-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Raleway';
+    src: url('./fonts/raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-I';
+    src: url('./fonts/raleway/Raleway-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
 * {
-    font-family: 'Lobster' !important;
     cursor: default;
     overflow-x: hidden;
     overflow-y: auto;
@@ -17,13 +26,6 @@
     position: fixed;
 }
 
-
-.main-content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .logo {
     display: flex;
     justify-content: center;
@@ -34,6 +36,7 @@
     margin: 0;
     margin-bottom: 1rem !important;
     overflow: hidden;
+    font-family: 'Lobster' !important;
 }
 
 .main-content {
@@ -43,6 +46,10 @@
     text-align: center; /* Center text horizontally */
 }
 
+.main-content-container {
+    font-family: 'Raleway';
+}
+
 .board-button {
     justify-content: center;
     align-items: center;
@@ -50,6 +57,7 @@
     border-radius: 1rem;
     background-color: lightgray;
     margin: .2rem;
+    font-family: 'Lobster' !important;
 }
 
 .board-form {
@@ -75,6 +83,53 @@
 
 .post-card {
     box-sizing: border-box;
-    margin: .25rem;
 }
 
+.gallery {
+    columns: 1;
+    column-gap: 1rem;
+    align-items: start;
+    margin: 0.5rem;
+}
+
+.gallery .board-post {
+    margin-bottom: 1rem;
+    padding: 0;
+    border: none;
+}
+
+.board-post {
+    position: relative;
+  }
+  
+  .board-post .card-img-overlay {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+  }
+  
+  .board-post:hover .card-img-overlay {
+    opacity: 1;
+  }
+
+/* Media query for viewports >568px (2 columns) */
+@media screen and (min-width: 568px) {
+    .gallery {
+      columns: 2;
+    }
+  }
+  
+  /* Media query for viewports <768px (3 columns) */
+  /* @media screen and (min-width: 768px) {
+    .gallery {
+      columns: 3;
+    }
+  } */
+  
+  /* Media query for viewports >1024px (4 columns) */
+  @media screen and (min-width: 1024px) {
+    .gallery {
+      columns: 3;
+    }
+  }
