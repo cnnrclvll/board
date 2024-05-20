@@ -1,14 +1,3 @@
-{{!-- <section class="post">
-    <div class="post-body">
-        <img src="{{source}}" alt="{{description}}">
-        <div class="post-overlay">
-          <h2>{{title}}</h2>
-          <p>By: {{user.user_name}}</p>
-        </div>
-    </div>
-  </a>
-</section> --}}
-
 <a href="{{url}}">
 <div class="card board-post">
   <div class="card-img-container">
@@ -17,7 +6,7 @@
   <div class="card-img-overlay">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text">{{format_date created_at}}</p>
-    <p class="card-text"><small>{{user.user_name}}</small></p>
+    <p class="card-text">{{user.user_name}}</p>
   </div>
 </div>
 </a>
