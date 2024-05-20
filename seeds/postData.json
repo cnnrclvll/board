@@ -120,18 +120,6 @@
     "board_id": "1"
   },
   {
-    "title": "Local Soap Kitchen Looking for Voluneteers",
-    "source": "/uploads/volunteers.png",
-    "content": "Food Bank Volunteers needed to help serve the community, Register online, see the link",
-    "x_coord": 10,
-    "y_coord": 20,
-    "width": 100,
-    "height": 50,
-    "url": "https://www.houstonfoodbank.org/ways-to-give/give-time/",
-    "user_id": "1",
-    "board_id": "2"
-  },
-  {
     "title": "Food Truck Festival",
     "source": "/uploads/foodtruck.jpeg",
     "content": "Come Join Us For A Fun Day in the Park",
