@@ -196,7 +196,9 @@ router.get("/profile", withAuth, async (req, res) => {
       },
     });
     const user = userData.get({ plain: true });
+    const atProfile = true;
     res.render("profile", {
+      atProfile,
       user,
       logged_in: req.session.loggedIn,
     });
