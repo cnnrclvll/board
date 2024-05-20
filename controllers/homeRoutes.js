@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
     });
     // send 5 most popular boards
     const boardData = boards
-      .slice(0, 5)
+      .slice(0, 4)
       .map((board) => board.get({ plain: true }));
 
     res.render("homepage", {

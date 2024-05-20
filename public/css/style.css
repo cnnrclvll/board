@@ -1,20 +1,29 @@
 @font-face {
-    font-family: 'Lobster-Regular';
-    src: url('./fonts/lobster/Lobster-Regular.ttf') format('opentype');
+    font-family: 'Lobster';
+    src: url('./fonts/lobster/Lobster-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('./fonts/raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway-I';
+    src: url('./fonts/raleway/Raleway-Italic-VariableFont_wght.ttf') format('truetype');
 }
 
 * {
-    font-family: 'Lobster-Regular' !important;
-    overflow: hidden;
     cursor: default;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.main-content-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: gray;
-    height: 100vh;
+.svg-container {
+    min-width: 100vw; /* 100% of viewport width */
+    min-height: 100vh; /* 100% of viewport height */
+    z-index: -1;
+    position: fixed;
 }
 
 .logo {
@@ -26,6 +35,8 @@
     padding-right: 1rem;
     margin: 0;
     margin-bottom: 1rem !important;
+    overflow: hidden;
+    font-family: 'Lobster' !important;
 }
 
 .main-content {
@@ -35,6 +46,10 @@
     text-align: center; /* Center text horizontally */
 }
 
+.main-content-container {
+    font-family: 'Raleway';
+}
+
 .board-button {
     justify-content: center;
     align-items: center;
@@ -42,6 +57,7 @@
     border-radius: 1rem;
     background-color: lightgray;
     margin: .2rem;
+    font-family: 'Lobster' !important;
 }
 
 .board-form {
@@ -62,5 +78,58 @@
 
 .modal-title {
     margin: 0;
-    padding: 0;;
+    padding: 0;
 }
+
+.post-card {
+    box-sizing: border-box;
+}
+
+.gallery {
+    columns: 1;
+    column-gap: 1rem;
+    align-items: start;
+    margin: 0.5rem;
+}
+
+.gallery .board-post {
+    margin-bottom: 1rem;
+    padding: 0;
+    border: none;
+}
+
+.board-post {
+    position: relative;
+  }
+  
+  .board-post .card-img-overlay {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+  }
+  
+  .board-post:hover .card-img-overlay {
+    opacity: 1;
+  }
+
+/* Media query for viewports >568px (2 columns) */
+@media screen and (min-width: 568px) {
+    .gallery {
+      columns: 2;
+    }
+  }
+  
+  /* Media query for viewports <768px (3 columns) */
+  /* @media screen and (min-width: 768px) {
+    .gallery {
+      columns: 3;
+    }
+  } */
+  
+  /* Media query for viewports >1024px (4 columns) */
+  @media screen and (min-width: 1024px) {
+    .gallery {
+      columns: 3;
+    }
+  }

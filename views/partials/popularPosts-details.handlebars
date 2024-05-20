@@ -1,26 +1,27 @@
-<div class="pure-g">
-    {{#each boardData}}
-        <div class="card text-center">
-            <div class="card-header">
-                Featured
-            </div>
+<div class="grid-container">
+    <div class="pure-g popular-posts">
+        {{#each boardData}}
+            <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-4 card text-center post-card">
+                <div class="card-header">
+                    Featured
+                </div>
 
-            <div class="card-body">
-                <h5 class="card-title">{{title}}</h5>
-                <p class="card-text">Post Count: {{this.post_count}}</p>
-                <p class="card-text">
-                    {{#each this.tags}}
-                        {{this.tag_name}}
-                        {{#unless @last}}, {{/unless}}
-                    {{/each}}
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{title}}</h5>
+                    <p class="card-text">Post Count: {{this.post_count}}</p>
+                    <p class="card-text">
+                        {{#each this.tags}}
+                            {{this.tag_name}}
+                            {{#unless @last}}+{{/unless}}
+                        {{/each}}
+                    </p>
+                    <a href="/board/{{id}}" class="btn btn-primary">Visit Board</a>
+                </div>
 
-            <div class="card-footer text-body-secondary">
-                {{format_date this.created_at}}
+                <div class="card-footer text-body-secondary">
+                    {{format_date this.created_at}}
+                </div>
             </div>
-        </div>
-    {{/each}}
+        {{/each}}
+    </div>
 </div>
-
