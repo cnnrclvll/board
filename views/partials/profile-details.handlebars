@@ -1,5 +1,5 @@
 <a href="{{url}}">
-<div class="card board-post">
+<div class="card board-post profile-post">
   <div class="card-img-container">
     <img src="{{source}}" class="card-img" alt="{{description}}">
   </div>
@@ -7,6 +7,7 @@
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text">{{format_date created_at}}</p>
     <p class="card-text">{{user.user_name}}</p>
+    <button data-id="{{id}}" class="pure-button pure-button-primary delete-post">Delete Post</button>
   </div>
 </div>
 </a>

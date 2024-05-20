@@ -4,14 +4,10 @@
     </a>
     <div class="signin-signup-container">
         {{#if logged_in}}
-
-            {{> search-details }}
             
             <a id="profile" class="button-xlarge pure-button board-button" href="/profile">Profile</a>
             <button id="logout" class="button-xlarge pure-button board-button">Logout</button>
             <a id="create-board" class="button-xlarge pure-button board-button" href="/create-board">Create Board</a>
-
-
 
         {{else}}
             {{#if atLogin}}
@@ -47,7 +43,7 @@
                                     <label for="aligned-cb" class="pure-checkbox">
                                         <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions
                                     </label>
-                                    <button type="submit" id="sign-up-button" class="pure-button board-button">Submit</button>
+                                    <button type="submit" id="sign-up-button" class="pure-button pure-button-primary board-button">Submit</button>
                                 </div>
                             </fieldset>
                         </form>
@@ -61,3 +57,5 @@
         {{/if}}
     </div>
 </div>
+
+{{> search-details }}

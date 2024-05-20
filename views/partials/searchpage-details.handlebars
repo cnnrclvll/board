@@ -1,15 +1,17 @@
-<div class="col-sm-6 mb-3 mb-sm-0">
-    <div class="card">
+<div class="search-results">
+    {{#each boardData}}
+    <div class="card text-center post-card">
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">
+            <p class="card-text card-tags">
                 {{#each allTags as |tag|}}
-                {{tag_name}}{{#unless @last}}, {{/unless}}
+                {{tag_name}}{{#unless @last}} + {{/unless}}
                 {{/each}}
             </p>
             <div>
-                <a href="board/{{id}}/create-post" class="pure-button board-button">Create a post</a>
+                <a href="/board/{{id}}" class="pure-button board-button visit-board">Visit Board</a>
             </div>
         </div>
     </div>
+    {{/each}}
 </div>
