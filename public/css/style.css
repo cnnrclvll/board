@@ -14,9 +14,12 @@
 }
 
 * {
-    cursor: default;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+a {
+  cursor: pointer;
 }
 
 .svg-container {
@@ -101,17 +104,25 @@
 .board-post {
     position: relative;
   }
-  
-  .board-post .card-img-overlay {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 
-  }
-  
-  .board-post:hover .card-img-overlay {
-    opacity: 1;
-  }
+.card-img-container {
+  transition: 0.3s ease;
+}
+
+.card:hover .card-img-container{
+  filter: brightness(25%);
+}
+
+.board-post .card-img-overlay {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+}
+
+.board-post:hover .card-img-overlay {
+  opacity: 1;
+}
 
 /* Media query for viewports >568px (2 columns) */
 @media screen and (min-width: 568px) {

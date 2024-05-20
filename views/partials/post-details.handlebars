@@ -9,11 +9,15 @@
   </a>
 </section> --}}
 
+<a href="{{url}}">
 <div class="card board-post">
-  <img src="{{source}}" class="card-img" alt="{{description}}">
+  <div class="card-img-container">
+    <img src="{{source}}" class="card-img" alt="{{description}}">
+  </div>
   <div class="card-img-overlay">
     <h5 class="card-title">{{title}}</h5>
     <p class="card-text">{{format_date created_at}}</p>
     <p class="card-text"><small>{{user.user_name}}</small></p>
   </div>
 </div>
+</a>
