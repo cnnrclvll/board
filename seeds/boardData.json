@@ -1,23 +1,27 @@
 [
   {
     "title": "Live Events",
-    "tags": ["concert", "Music", "Live Events","Entertainment","Comedy","Tour","stageplay","theatre","broadway","shows"]
+    "tags": ["concert", "Music", "Live Events","Entertainment","Comedy","Tour","stageplay","theatre","broadway","shows","Bands"]
   },
   {
     "title": "Local Meetups",
-    "tags": ["Local Events", "Community Projects","Free","Volunteer","community service","outreach","festival","dating","singles"]
-  },
-  {
-    "title": "Sports",
-    "tags": ["Fitness", "Activities","Live Events","competition","pro sports","local events","tickets","training"]
+    "tags": ["concert", "Local Events","Live Events", "Community Projects","Free","Volunteer","community service","outreach","festival","dating","singles","Entertainment","Music","Bands","Food"]
   },
   {
     "title": "Music",
-    "tags": ["Music", "Entertainment","Underground","Private"]
+    "tags": ["Music", "Entertainment","Underground","Private","Live Events","Local Events","Bands"]
+  },
+  {
+    "title": "Sports",
+    "tags": ["Fitness", "Activities","Live Events","competition","pro sports","local events","tickets","training","Entertainment"]
+  },
+  {
+    "title": "Job Oppurtunities",
+    "tags": ["Jobs", "Help Wanted","Employment","Labor","Local Events","Private"]
   },
   {
     "title": "Bars",
-    "tags": ["21+", "Food","Beverages","Drinks","Alcohol","Bars"]
+    "tags": ["21+", "Food","Beverages","Drinks","Alcohol","Bars","Entertainment","Music","Bands"]
   },
   {
     "title": "Gaming",
