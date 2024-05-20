@@ -1,5 +1,8 @@
-<div class="pure-g">
+<label for="board-gallery" class="board-label animate-flicker">{{board.title}}</label>
+<div id="board-gallery" class="gallery">
     {{#each board.posts as |post|}}
         {{> post-details}}
     {{/each}}
 </div>
+
+<a href="{{board.id}}/create-post" class="pure-button board-button create-post-button">Create a post</a>

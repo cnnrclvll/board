@@ -1,40 +1,59 @@
 const router = require("express").Router();
 const { Posts } = require("../../models");
+const logger = require("../../utils/logger");
+const fs = require('fs').promises;
+const sequelize = require('../../config/connection');
 
+// Route to create a new post
 router.post("/", async (req, res) => {
   try {
     const postData = await Posts.create(req.body);
-
     res.status(200).json(postData);
   } catch (err) {
+    logger.error(err);
     res.status(400).json(err);
   }
 });
 
-// TODO verify user
+// Route to delete a post by id
 router.delete("/:id", async (req, res) => {
+  const transaction = await sequelize.transaction();
+
   try {
-    // check if user is the one who posted
-    const postData = await Posts.destroy({
+    const post = await Posts.findOne({
       where: {
         id: req.params.id,
         user_id: req.session.userId,
       },
+      transaction,
     });
 
-  //   const postData = await Posts.destroy({
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //   });
+    if (!post) {
+      await transaction.rollback();
+      return res.status(404).json({ message: "No post found with this id!" });
+    }
 
-  //   if (!postData) {
-  //     res.status(404).json({ message: "No post found with this id!" });
-  //     return;
-  //   }
+    await post.destroy({ transaction });
 
-  //   res.status(200).json(postData);
+    const filePath = `././public/${post.source}`;
+    try {
+      await fs.access(filePath);
+      await fs.unlink(filePath);
+      logger.info(`File deleted successfully: ${filePath}`);
+    } catch (fileError) {
+      if (fileError.code === "ENOENT") {
+        logger.warn(`File not found, nothing to delete: ${filePath}`);
+      } else {
+        logger.error(`Error deleting file: ${filePath}`, fileError);
+        throw fileError;
+      }
+    }
+
+    await transaction.commit();
+    res.status(200).json({ message: "Post and file deleted successfully" });
   } catch (err) {
+    await transaction.rollback();
+    logger.error(err);
     res.status(500).json(err);
   }
 });

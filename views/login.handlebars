@@ -1,5 +1,5 @@
 <div class="board-form">
-    <h1 class="logo">board</h1>
+    <label class="animate-flicker login-label">Sign-in</label>
     <form class="pure-form sign-in-form">
         <fieldset>
             <div class="board-form">
@@ -9,54 +9,8 @@
             <div class="board-form">
                 <button id="sign-in" type="submit" class="pure-button pure-button-primary board-button">Sign-in</button>
             </div>
-            <div class="board-form">
-                <label for="default-remember">
-                    <input id="remember-me" type="checkbox" id="default-remember" /> Remember me
-                </label>
-            </div>
         </fieldset>
     </form>
-</div>
-
-<!-- Button trigger modal -->
-<button type="button" class="pure-button pure-button-primary board-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign-up</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header board-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        <h1 class="modal-title fs-1" id="staticBackdropLabel">Sign-up</h1>
-        <h1 class="modal-title fs-3" id="staticBackdropLabel">board</h1>
-
-      </div>
-      <div class="modal-body">
-        <form class="pure-form pure-form-aligned sign-up-form">
-            <fieldset>
-                <div class="pure-control-group">
-                    <label for="aligned-name">Username</label>
-                    <input type="text" id="aligned-name" placeholder="Username" />
-                </div>
-                <div class="pure-control-group">
-                    <label for="aligned-password">Password</label>
-                    <input type="password" id="aligned-password" placeholder="Password" />
-                </div>
-                <div class="pure-control-group">
-                    <label for="aligned-email">Email Address</label>
-                    <input type="email" id="aligned-email" placeholder="Email Address" />
-                </div>
-                <div class="pure-controls">
-                    <label for="aligned-cb" class="pure-checkbox">
-                        <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions
-                    </label>
-                    <button type="submit" id="sign-up-button" class="pure-button pure-button-primary">Submit</button>
-                </div>
-            </fieldset>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script src="js/login.js"></script>

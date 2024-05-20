@@ -1,6 +1,7 @@
-<div class="row">
-  {{#each boardData as |board|}}
-      {{> searchpage-details }}
-  {{/each}}
-</div>
+{{#if boardData.length}}
+    {{> searchpage-details}}
+{{else}}
+  <p>No boards found.</p>
+{{/if}}
 
+<script src="js/search.js"></script>

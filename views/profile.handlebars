@@ -1,0 +1,8 @@
+<div class="gallery">
+    {{#each user.posts as |post|}}
+        {{> profile-details }}
+    {{/each}}
+</div>
+
+<script src="/js/profile.js"></script>
+{{!-- card for each post, with delete button --}}
