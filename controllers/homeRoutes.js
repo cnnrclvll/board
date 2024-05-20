@@ -100,13 +100,14 @@ router.get("/create-board", withAuth, async (req, res) => {
 
 // login route
 router.get("/login", async (req, res) => {
+  const atLogin = true;
   try {
     if (req.session.loggedIn) {
       res.redirect("/");
       return;
     }
 
-    res.render("login");
+    res.render("login", { atLogin });
   } catch (err) {
     logger.error(err); // Log error
     res.status(500).render("error", { message: "Internal server error" });
