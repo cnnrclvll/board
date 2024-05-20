@@ -1,3 +1,4 @@
+/* fonts */
 @font-face {
     font-family: 'Lobster';
     src: url('./fonts/lobster/Lobster-Regular.ttf') format('truetype');
@@ -13,21 +14,133 @@
     src: url('./fonts/raleway/Raleway-Italic-VariableFont_wght.ttf') format('truetype');
 }
 
+/* animation loops */
+@keyframes flickerAnimation {
+  0% {
+    opacity: 0;
+    color: red;
+  }
+  1% {
+    color: yellow;
+  }
+  2% {
+    color: red;
+  }
+  80% {
+    opacity: 1;
+    color: inherit;
+  }
+}
+@-o-keyframes flickerAnimation{
+  0% {
+    opacity: 0;
+    color: red;
+  }
+  1% {
+    color: yellow;
+  }
+  2% {
+    color: red;
+  }
+  80% {
+    opacity: 1;
+    color: inherit;
+  }
+}
+@-moz-keyframes flickerAnimation{
+  0% {
+    opacity: 0;
+    color: red;
+  }
+  1% {
+    color: yellow;
+  }
+  2% {
+    color: red;
+  }
+  80% {
+    opacity: 1;
+    color: inherit;
+  }
+}
+@-webkit-keyframes flickerAnimation{
+  0% {
+    opacity: 0;
+    color: red;
+  }
+  1% {
+    color: yellow;
+  }
+  2% {
+    color: red;
+  }
+  80% {
+    opacity: 1;
+    color: inherit;
+  }
+}
+
+.animate-flicker {
+   -webkit-animation: flickerAnimation 2s infinite;
+   -moz-animation: flickerAnimation 2s infinite;
+   -o-animation: flickerAnimation 2s infinite;
+    animation: flickerAnimation 2s infinite;
+}
+
+/* standard styling */
 * {
     overflow-x: hidden;
     overflow-y: auto;
+    color: #212529;
 }
 
 a {
   cursor: pointer;
+  text-decoration: none;
+}
+
+a h1 {
+  color: #212529;
+}
+
+.login-label {
+  font-family: 'Lobster';
+  font-size: 222%;
+}
+
+.modal-header {
+  font-family: 'Lobster';
+  position: relative;
+}
+
+.modal-submit {
+  margin: 0 !important;
+}
+
+.modal-content {
+  background-color: transparent;
+}
+
+.modal-body {
+  background-color: white;
 }
 
 .svg-container {
-    min-width: 100vw; /* 100% of viewport width */
-    min-height: 100vh; /* 100% of viewport height */
+    min-width: 100vw;
+    min-height: 100vh;
     z-index: -1;
     position: fixed;
 }
+
+.svg-container2 {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Use absolute positioning to cover the entire modal-header */
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 
 .logo {
     display: flex;
@@ -42,11 +155,23 @@ a {
     font-family: 'Lobster' !important;
 }
 
+.topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.signin-signup-container {
+  display: flex;
+  align-items: center;
+}
+
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center; /* Center text horizontally */
+    text-align: center;
 }
 
 .main-content-container {
@@ -124,23 +249,15 @@ a {
   opacity: 1;
 }
 
-/* Media query for viewports >568px (2 columns) */
+/* media queries */
 @media screen and (min-width: 568px) {
     .gallery {
       columns: 2;
     }
-  }
+}
   
-  /* Media query for viewports <768px (3 columns) */
-  /* @media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
     .gallery {
       columns: 3;
     }
-  } */
-  
-  /* Media query for viewports >1024px (4 columns) */
-  @media screen and (min-width: 1024px) {
-    .gallery {
-      columns: 3;
-    }
-  }
+}
